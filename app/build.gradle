@@ -25,6 +25,8 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     def room_version = '2.2.3'
     def retrofit_version = '2.5.0'
     def retrofit_gson_version = '2.5.0'
@@ -86,6 +88,7 @@ dependencies {
     //google location service
     implementation "com.google.android.gms:play-services-location:$google_location_version"
 
-
+    //timber
+    implementation "com.jakewharton.timber:timber:4.7.1"
 
 }
