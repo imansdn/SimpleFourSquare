@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">SimpleFourSquare</string>
+
+    <string name="url_img_default"><![CDATA[https://whatsonhub.com/leeds/files/2018/06/No-Location-Placeholder.png]]></string>
+    <string name="things_to_do">Things To Do</string>
+    <string name="dinner">Dinner</string>
+    <string name="lunch">Lunch</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="coffe_tea"><![CDATA[Coffee & Tea]]></string>
+    <string name="oops_error">🤦 oops, Error occurred :</string>
+    <string name="error_occured">Error occurred :</string>
+    <string name="opse_can_not_connect">🤦 oops, Couldn\'t connect to server</string>
+    <string name="no_network">🤕 ⚠️ seems network is not available!</string>
+
 </resources>
