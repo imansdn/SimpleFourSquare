@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_main"
+    app:startDestination="@id/exploreListFragment">
+
+    <fragment
+        android:id="@+id/exploreListFragment"
+        android:name="com.imandroid.simplefoursquare.screen.exploresList.ExploreListFragment"
+        android:label="ExploreListFragment" >
+        <action
+            android:id="@+id/action_exploreListFragment_to_exploreDetailsFragment"
+            app:destination="@id/exploreDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exploreDetailsFragment"
+        android:name="com.imandroid.simplefoursquare.screen.exploreDetails.ExploreDetailsFragment"
+        android:label="ExploreDetailsFragment" >
+        <argument
+            android:name="explore"
+            app:argType="com.imandroid.simplefoursquare.domain.ExploreModel" />
+    </fragment>
+</navigation>
