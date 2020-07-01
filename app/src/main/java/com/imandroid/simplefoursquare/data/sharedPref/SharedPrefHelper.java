@@ -46,6 +46,7 @@ public class SharedPrefHelper {
         return sharedPreferences.getInt(key, defValue);
     }
 
+
     public float read(String key, float defValue) {
         return sharedPreferences.getFloat(key, defValue);
     }
