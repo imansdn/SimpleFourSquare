@@ -17,7 +17,7 @@ class Converters {
             return listOf()
         }
 
-        val listType = object : TypeToken<List<Long>>() {}.type
+        val listType = object : TypeToken<List<String>>() {}.type
 
         return Gson().fromJson(value, listType)
     }
