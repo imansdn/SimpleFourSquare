@@ -4,10 +4,16 @@ import com.imandroid.simplefoursquare.domain.ExploreModel
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Observable
+import io.reactivex.Single
 
 interface ExploreDataSource {
 
-    fun getAllExplores(isNeedClear:Boolean,latlong:String ,offset:String): Flowable<List<ExploreModel>>
+    fun getAllExplores(isNeedClear:Boolean,latlong:String ,pageNumber:String): Maybe<List<ExploreModel>>
 
+    fun getExploreById(exploreId:String):Maybe<ExploreModel>
+
+    fun getAllExploresFromApiSaveToDB(isNeedClear:Boolean, latlong:String, offset:String):Maybe<List<ExploreModel>>
+
+    fun clear()
 
 }
