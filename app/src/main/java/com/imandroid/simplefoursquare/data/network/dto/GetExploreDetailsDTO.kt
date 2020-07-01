@@ -50,7 +50,7 @@ data class GetExploreDetailsDTO(
             @SerializedName("hours")
             val hours: Hours,
             @SerializedName("id")
-            val id: String,
+            val id: String?,
             @SerializedName("inbox")
             val inbox: Inbox,
             @SerializedName("likes")
@@ -60,7 +60,7 @@ data class GetExploreDetailsDTO(
             @SerializedName("location")
             val location: Location,
             @SerializedName("name")
-            val name: String,
+            val name: String?,
             @SerializedName("ok")
             val ok: Boolean,
             @SerializedName("pageUpdates")
@@ -74,7 +74,7 @@ data class GetExploreDetailsDTO(
             @SerializedName("rating")
             val rating: Double,
             @SerializedName("ratingColor")
-            val ratingColor: String,
+            val ratingColor: String?,
             @SerializedName("ratingSignals")
             val ratingSignals: Int,
             @SerializedName("reasons")
@@ -82,7 +82,7 @@ data class GetExploreDetailsDTO(
             @SerializedName("seasonalHours")
             val seasonalHours: List<Any>,
             @SerializedName("shortUrl")
-            val shortUrl: String,
+            val shortUrl: String?,
             @SerializedName("specials")
             val specials: Specials,
             @SerializedName("stats")
@@ -491,13 +491,13 @@ data class GetExploreDetailsDTO(
 
             data class Location(
                 @SerializedName("address")
-                val address: String,
+                val address: String?,
                 @SerializedName("cc")
-                val cc: String,
+                val cc: String?,
                 @SerializedName("city")
-                val city: String,
+                val city: String?,
                 @SerializedName("country")
-                val country: String,
+                val country: String?,
                 @SerializedName("formattedAddress")
                 val formattedAddress: List<String>,
                 @SerializedName("labeledLatLngs")
@@ -507,7 +507,7 @@ data class GetExploreDetailsDTO(
                 @SerializedName("lng")
                 val lng: Double,
                 @SerializedName("state")
-                val state: String
+                val state: String?
             ) {
                 data class LabeledLatLng(
                     @SerializedName("label")

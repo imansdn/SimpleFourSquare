@@ -70,11 +70,11 @@ data class GetAllExploresDTO(
                     @SerializedName("categories")
                     val categories: List<Category>,
                     @SerializedName("id")
-                    val id: String,
+                    val id: String?,
                     @SerializedName("location")
                     val location: Location,
                     @SerializedName("name")
-                    val name: String,
+                    val name: String?,
                     @SerializedName("photos")
                     val photos: Photos
                 ) {
@@ -103,13 +103,13 @@ data class GetAllExploresDTO(
 
                     data class Location(
                         @SerializedName("address")
-                        val address: String,
+                        val address: String?,
                         @SerializedName("cc")
                         val cc: String,
                         @SerializedName("city")
-                        val city: String,
+                        val city: String?,
                         @SerializedName("country")
-                        val country: String,
+                        val country: String?,
                         @SerializedName("distance")
                         val distance: Int,
                         @SerializedName("formattedAddress")
@@ -121,7 +121,7 @@ data class GetAllExploresDTO(
                         @SerializedName("lng")
                         val lng: Double,
                         @SerializedName("state")
-                        val state: String
+                        val state: String?
                     ) {
                         data class LabeledLatLng(
                             @SerializedName("label")
