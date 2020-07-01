@@ -28,6 +28,15 @@ android {
     buildFeatures {
         dataBinding = true
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
@@ -86,6 +95,7 @@ dependencies {
 
     //picasso
     implementation "com.squareup.picasso:$picasso_version"
+    implementation 'jp.wasabeef:picasso-transformations:2.2.1'
 
 
     //navigation graph
