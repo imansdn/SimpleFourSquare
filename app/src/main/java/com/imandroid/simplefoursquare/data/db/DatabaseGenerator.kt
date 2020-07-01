@@ -12,7 +12,7 @@ import com.imandroid.simplefoursquare.data.db.table.TipEntity
 import com.imandroid.simplefoursquare.util.Converters
 
 
-const val DATABASE_VERSION =2
+const val DATABASE_VERSION =20
 const val DATABASE_NAME ="simple_4square_db"
 
 @Database(entities = [ExploreEntity::class,TipEntity::class,CategoryEntity::class], version = DATABASE_VERSION, exportSchema = false)
