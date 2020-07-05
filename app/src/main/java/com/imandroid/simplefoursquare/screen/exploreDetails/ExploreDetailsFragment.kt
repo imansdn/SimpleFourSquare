@@ -32,7 +32,6 @@ import timber.log.Timber
 
 class ExploreDetailsFragment : Fragment() {
     lateinit var exploreModel: ExploreModel
-//    private lateinit var viewModel: SharedViewModel
     private val sharedViewModel: ExploreSharedViewModel by activityViewModels {getFactory()}
 
 
@@ -149,9 +148,6 @@ class ExploreDetailsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         Timber.i("onDestroyView")
-//        viewModel.bag.dispose()
-//        viewModel.bag.clear()
-//        viewModelStore.clear()
     }
 
 }
