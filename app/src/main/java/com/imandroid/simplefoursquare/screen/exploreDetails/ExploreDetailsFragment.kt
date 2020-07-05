@@ -43,23 +43,6 @@ class ExploreDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.explore_details_fragment, container, false)
-        exploreModel = ExploreDetailsFragmentArgs.fromBundle(arguments!!).explore
-        Timber.i(exploreModel.toString())
-        binding.imgBack.setOnClickListener {
-            findNavController().navigateUp()
-        }
-        setExploreData(exploreModel)
-
-        sharedViewModel.getExploreById(explore_id = exploreModel.explore_id)
-
-        sharedViewModel.explore.observe(viewLifecycleOwner, Observer {
-            Timber.i("received explore details in fragment observer... likes -> ${it.likes}")
-            if(it.explore_id==exploreModel.explore_id){
-               //set fresh data
-                setExploreData(it)
-            }
-
-        })
 
         return binding.root
     }
@@ -80,7 +63,22 @@ class ExploreDetailsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        exploreModel = ExploreDetailsFragmentArgs.fromBundle(arguments!!).explore
+        binding.imgBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        setExploreData(exploreModel)
 
+        sharedViewModel.getExploreById(explore_id = exploreModel.explore_id)
+
+        sharedViewModel.explore.observe(viewLifecycleOwner, Observer {
+            Timber.i("received explore details in fragment observer... likes -> ${it.likes}")
+            if(it.explore_id==exploreModel.explore_id){
+                //set fresh data
+                setExploreData(it)
+            }
+
+        })
 
     }
 
