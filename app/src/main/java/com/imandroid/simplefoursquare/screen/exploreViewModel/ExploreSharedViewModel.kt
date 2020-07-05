@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import java.lang.Exception
 
-class ExploreSharedViewModel(private val repository: ExploreRepository, private val mResourceProvider: ResourceProvider) : ViewModel() {
+class ExploreSharedViewModel(private val repository: ExploreRepository) : ViewModel() {
     var bag = CompositeDisposable()
 
      var explores = mutableListOf<ExploreModel>()

@@ -75,8 +75,6 @@ class ExploreDetailsFragment : Fragment() {
                 sharedPrefHelper = SharedPrefHelper.getInstance(requireContext())
                 , errorListener = { errorHandling(it) }
             )
-
-            , mResourceProvider = ResourceProvider(requireContext())
         )
     }
 

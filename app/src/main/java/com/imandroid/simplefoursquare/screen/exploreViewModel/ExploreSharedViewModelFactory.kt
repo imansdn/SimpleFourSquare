@@ -5,13 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.imandroid.simplefoursquare.data.ExploreRepository
 import com.imandroid.simplefoursquare.util.ResourceProvider
 
-class ExploreSharedViewModelFactory(private val repository: ExploreRepository, private val mResourceProvider: ResourceProvider) :ViewModelProvider.Factory {
+class ExploreSharedViewModelFactory(private val repository: ExploreRepository) :ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ExploreSharedViewModel::class.java)) {
             return ExploreSharedViewModel(
-                repository,
-                mResourceProvider
-            ) as T
+                repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

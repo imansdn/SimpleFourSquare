@@ -132,9 +132,7 @@ class ExploreListFragment : Fragment() {
             sharedPrefHelper = sharedPrefHelper,
             errorListener = {errorHandling(it)}
         )
-        return ExploreSharedViewModelFactory(
-            repository = repository, mResourceProvider = ResourceProvider(requireContext())
-        )
+        return ExploreSharedViewModelFactory(repository)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
