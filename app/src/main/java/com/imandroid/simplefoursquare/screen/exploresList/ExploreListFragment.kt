@@ -151,7 +151,7 @@ class ExploreListFragment : Fragment() {
         setUpRecyclerView(savedInstanceState)
 
 
-        sharedViewModel.allExplores.observe(requireActivity(), Observer {
+        sharedViewModel.allExplores.observe(viewLifecycleOwner, Observer {
             Timber.i("get explores in fragment isLoading = ${sharedViewModel.isLoading}")
             if (sharedViewModel.isLoading && it.isNotEmpty()){
                 sharedViewModel.isLoading =false
