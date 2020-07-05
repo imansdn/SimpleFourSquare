@@ -93,9 +93,11 @@ class ExploreListFragment : Fragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
+        if (this::binding.isInitialized){
+            binding.exploreRecycler.layoutManager?.onSaveInstanceState()
+                ?.let { outState.putParcelable(KEY_RECYCLER_STATE, it) }
+        }
 
-        binding.exploreRecycler.layoutManager?.onSaveInstanceState()
-            ?.let { outState.putParcelable(KEY_RECYCLER_STATE, it) }
 
     }
 //    override fun onResume() {
@@ -286,7 +288,6 @@ class ExploreListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         requireActivity().unregisterReceiver(broadCastNewMessage)
-
  }
 
 
