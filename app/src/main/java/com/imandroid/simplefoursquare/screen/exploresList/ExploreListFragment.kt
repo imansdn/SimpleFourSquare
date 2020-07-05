@@ -288,6 +288,7 @@ class ExploreListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         requireActivity().unregisterReceiver(broadCastNewMessage)
+        binding.exploreRecycler.adapter=null
  }
 
 
