@@ -87,13 +87,13 @@ class TrackingService : Service() {
                         Timber.d("call for first time with last known location")
                         sendBroadcast(Intent(BROADCAST_UPDATE_EXPLORE_LIST)
                             .putExtra(LATLONG, "${location.latitude},${location.longitude}")
-                            .putExtra(IS_NEED_CLEAR, false))
+                            .putExtra(IS_NEED_CLEAR, true))
                     }else{
-                        //call for first time if there is no last location with sample lat lng
+//                        call for first time if there is no last location with sample lat lng
                         Timber.d("tempLocation == null so call with sample lat long!")
-                        sendBroadcast(Intent(BROADCAST_UPDATE_EXPLORE_LIST)
-                            .putExtra(LATLONG, SAMPLE_LAT_LNG)
-                            .putExtra(IS_NEED_CLEAR, false))
+//                        sendBroadcast(Intent(BROADCAST_UPDATE_EXPLORE_LIST)
+//                            .putExtra(LATLONG, SAMPLE_LAT_LNG)
+//                            .putExtra(IS_NEED_CLEAR, true))
                     }
                 }
 
@@ -126,9 +126,12 @@ class TrackingService : Service() {
      */
     fun checkNewLocationDistance(location: Location) {
         Timber.d("Got a now location: $location")
-        val latlong="${location.latitude},${location.longitude}"
         if (tempLocation == null) {
             tempLocation = location
+            sendBroadcast(Intent(BROADCAST_UPDATE_EXPLORE_LIST)
+                .putExtra(LATLONG, "${location.latitude},${location.longitude}")
+                .putExtra(IS_NEED_CLEAR, true))
+            sendBroadcast(Intent(BROADCAST_UPDATE_DISTANCE).putExtra(DISTANCE, 0))
         } else {
             val distance = tempLocation!!.distanceBetween(location)
             sharedPrefHelper.write(SH_DISTANCE,distance.toFloat())
