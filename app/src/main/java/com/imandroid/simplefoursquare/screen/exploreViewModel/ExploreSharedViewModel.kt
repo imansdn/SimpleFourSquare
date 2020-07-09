@@ -35,7 +35,7 @@ class ExploreSharedViewModel(private val repository: ExploreRepository) : ViewMo
     var isLoading = true
 
 
-     fun getAllExplores(isNeedClear:Boolean=false, latlong:String= SAMPLE_LAT_LNG, pageNumber:Int=currentPage){
+     fun getAllExplores(isNeedClear:Boolean=false, latlong:String, pageNumber:Int=currentPage){
         isLoading = true
          repository.getAllExplores(isNeedClear = isNeedClear,latlong = latlong,pageNumber =pageNumber.toString())
             .subscribeOn(Schedulers.io())

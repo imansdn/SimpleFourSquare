@@ -42,6 +42,7 @@ class ExploreListFragment : Fragment() {
     private val sharedViewModel: ExploreSharedViewModel by activityViewModels {getFactory()}
     lateinit var binding: ExploreListFragmentBinding
     lateinit var exploresLayoutManager:LinearLayoutManager
+    var latlong:String = ""
     val exploreAdapter by lazy {
          ExploreAdapter {
              try {
@@ -63,8 +64,10 @@ class ExploreListFragment : Fragment() {
                     requireActivity().toast("update explores...")
                     sharedViewModel.explores.clear()
                     val isNeedClear = intent.extras?.getBoolean(IS_NEED_CLEAR, false)!!
-                    val latlong = intent.extras?.getString(LATLONG, SAMPLE_LAT_LNG)!!
-                    sharedViewModel.getAllExplores(isNeedClear = isNeedClear,latlong = latlong,pageNumber = 0)
+                    latlong = intent.extras?.getString(LATLONG, "")!!
+                    if (latlong.isNotEmpty()) {
+                        sharedViewModel.getAllExplores(isNeedClear = isNeedClear,latlong = latlong,pageNumber = 0)
+                    }
                 }
 
                 BROADCAST_UPDATE_DISTANCE ->{
@@ -174,7 +177,10 @@ class ExploreListFragment : Fragment() {
                     sharedViewModel.isLoading=false
                     exploreAdapter.removeLoading()
                     showSnack(getString(R.string.error_occured_during_request_data),getString(R.string.try_again)) {
-                        sharedViewModel.getAllExplores()
+                        if (latlong.isNotEmpty()){
+                            sharedViewModel.getAllExplores(latlong=latlong)
+                        }
+
                     }
                     showSnackRecursive(getString(R.string.error_occured_during_request_data),getString(R.string.try_again)) {
                         val visibleItemCount: Int =
@@ -223,7 +229,10 @@ class ExploreListFragment : Fragment() {
                 exploreAdapter.addLoading()
 
                 /** ask to request more data from api */
-                sharedViewModel.getAllExplores()
+                if (latlong.isNotEmpty()){
+                    sharedViewModel.getAllExplores(latlong=latlong)
+
+                }
 
 //                }
             }
@@ -247,7 +256,10 @@ class ExploreListFragment : Fragment() {
             exploreAdapter.removeLoading()
         }
         showSnack(getString(R.string.error_occured_during_request_data),getString(R.string.try_again)) {
-            sharedViewModel.getAllExplores()
+            if (latlong.isNotEmpty()) {
+                sharedViewModel.getAllExplores(latlong=latlong)
+            }
+
         }
     }
 
@@ -270,7 +282,9 @@ class ExploreListFragment : Fragment() {
            requireActivity().findViewById<View>(android.R.id.content).snack(message){
                action(actionMessage) {
                    if (action()){
-                       sharedViewModel.getAllExplores()
+                       if (latlong.isNotEmpty()) {
+                           sharedViewModel.getAllExplores(latlong=latlong)
+                       }
                        showSnackRecursive(message, actionMessage, action)
                    }
 
