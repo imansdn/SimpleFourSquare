@@ -61,7 +61,7 @@ class ExploreListFragment : Fragment() {
              }
          }
     }
-    lateinit var repository: ExploreRepository
+    private lateinit var repository: ExploreRepository
     lateinit var sharedPrefHelper: SharedPrefHelper
     private val broadCastNewMessage = object :BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -85,7 +85,7 @@ class ExploreListFragment : Fragment() {
                     val df = DecimalFormat("#.##",symbols)
                     df.roundingMode = RoundingMode.CEILING
                     distance = df.format(distance).toDouble()
-                    binding.txtDistance.text="distance with previous point is about $distance meter"
+                    binding.txtDistance.text= getString(R.string.distance_message,distance.toString())
 
                 }
             }
@@ -231,6 +231,7 @@ class ExploreListFragment : Fragment() {
 
 
     private fun errorHandling(message:String){
+        Timber.e(message)
         if (sharedViewModel.isLoading){
             sharedViewModel.isLoading =false
             exploreAdapter.removeLoading()
