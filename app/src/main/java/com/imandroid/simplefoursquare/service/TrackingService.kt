@@ -91,9 +91,6 @@ class TrackingService : Service() {
                     }else{
 //                        call for first time if there is no last location with sample lat lng
                         Timber.d("tempLocation == null so call with sample lat long!")
-//                        sendBroadcast(Intent(BROADCAST_UPDATE_EXPLORE_LIST)
-//                            .putExtra(LATLONG, SAMPLE_LAT_LNG)
-//                            .putExtra(IS_NEED_CLEAR, true))
                     }
                 }
 
