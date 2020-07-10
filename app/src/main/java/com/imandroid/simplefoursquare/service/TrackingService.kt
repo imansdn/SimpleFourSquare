@@ -196,12 +196,6 @@ class TrackingService : Service() {
         val pendingIntent = PendingIntent.getActivity(this, 0,
             notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-//        val pendingIntent = NavDeepLinkBuilder(this)
-//            .setComponentName(MainActivity::class.java)
-//            .setGraph(R.navigation.nav_main)
-//            .setDestination(R.id.exploreListFragment)
-//            .createPendingIntent()
-
         val builder = NotificationCompat.Builder(this, getNotificationChannelId())
             .setContentTitle(getString(R.string.app_name))
             .setContentText(getString(R.string.tracking_walk_working))

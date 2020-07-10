@@ -47,9 +47,6 @@ class ExploreAdapter constructor(val listener: (Int) -> Unit) :
                 }
 
             }
-            is LoadingViewHolder -> {
-                holder.bind()
-            }
         }
 
 
@@ -110,14 +107,7 @@ class ExploreAdapter constructor(val listener: (Int) -> Unit) :
     }
 
 
-    inner class LoadingViewHolder constructor(var binding: ItemLoadingBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind() {
-
-        }
-
-    }
+    inner class LoadingViewHolder constructor(var binding: ItemLoadingBinding) : RecyclerView.ViewHolder(binding.root) {}
 
 
     fun addLoading() {
@@ -126,7 +116,6 @@ class ExploreAdapter constructor(val listener: (Int) -> Unit) :
         list.addAll(currentList)
         list.add(DataItem.LoadingItem)
         submitList(list)
-//        notifyItemInserted(list.lastIndex)
     }
 
 
@@ -137,7 +126,6 @@ class ExploreAdapter constructor(val listener: (Int) -> Unit) :
         list.addAll(currentList)
         list.remove(DataItem.LoadingItem)
         submitList(list)
-//        notifyItemRemoved(list.size)
     }
 
 
