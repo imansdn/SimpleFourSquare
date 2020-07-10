@@ -38,7 +38,16 @@ import java.util.*
 
 
 class ExploreListFragment : Fragment() {
-
+    private fun getFactory(): ExploreSharedViewModelFactory {
+        sharedPrefHelper =  SharedPrefHelper.getInstance(requireContext())
+        repository = ExploreRepository(
+            api = ExploreApiDataImpl(),
+            db = ExploreDbDataImpl(DatabaseGenerator.getInstance(requireContext()).exploreDao),
+            sharedPrefHelper = sharedPrefHelper,
+            errorListener = {errorHandling(it)}
+        )
+        return ExploreSharedViewModelFactory(repository)
+    }
     private val sharedViewModel: ExploreSharedViewModel by activityViewModels {getFactory()}
     lateinit var binding: ExploreListFragmentBinding
     lateinit var exploresLayoutManager:LinearLayoutManager
@@ -107,16 +116,6 @@ class ExploreListFragment : Fragment() {
 
 
         return binding.root
-    }
-    private fun getFactory(): ExploreSharedViewModelFactory {
-        sharedPrefHelper =  SharedPrefHelper.getInstance(requireContext())
-        repository = ExploreRepository(
-            api = ExploreApiDataImpl(),
-            db = ExploreDbDataImpl(DatabaseGenerator.getInstance(requireContext()).exploreDao),
-            sharedPrefHelper = sharedPrefHelper,
-            errorListener = {errorHandling(it)}
-        )
-        return ExploreSharedViewModelFactory(repository)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

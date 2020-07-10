@@ -31,21 +31,6 @@ import timber.log.Timber
 
 
 class ExploreDetailsFragment : Fragment() {
-    lateinit var exploreModel: ExploreModel
-    private val sharedViewModel: ExploreSharedViewModel by activityViewModels {getFactory()}
-
-
-
-    lateinit var binding: ExploreDetailsFragmentBinding
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.explore_details_fragment, container, false)
-
-        return binding.root
-    }
-
     private fun getFactory(): ExploreSharedViewModelFactory {
 
         return ExploreSharedViewModelFactory(
@@ -58,6 +43,18 @@ class ExploreDetailsFragment : Fragment() {
                 , errorListener = { errorHandling(it) }
             )
         )
+    }
+    private val sharedViewModel: ExploreSharedViewModel by activityViewModels {getFactory()}
+    lateinit var exploreModel: ExploreModel
+
+    lateinit var binding: ExploreDetailsFragmentBinding
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.explore_details_fragment, container, false)
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
