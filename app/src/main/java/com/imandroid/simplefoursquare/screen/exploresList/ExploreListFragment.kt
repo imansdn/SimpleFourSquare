@@ -54,7 +54,6 @@ class ExploreListFragment : Fragment() {
     }
     lateinit var repository: ExploreRepository
     lateinit var sharedPrefHelper: SharedPrefHelper
-    private var mBundleRecyclerViewState: Bundle? = null
     private val broadCastNewMessage = object :BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             when (intent?.action) {
@@ -84,16 +83,6 @@ class ExploreListFragment : Fragment() {
         }
     }
 
-//    override fun onPause() {
-//        // save RecyclerView state
-//        mBundleRecyclerViewState = Bundle()
-//        val listState: Parcelable? = binding.exploreRecycler.layoutManager?.onSaveInstanceState()
-//        mBundleRecyclerViewState!!.putParcelable(KEY_RECYCLER_STATE, listState)
-//
-//        super.onPause()
-//
-//    }
-
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         if (this::binding.isInitialized){
@@ -103,15 +92,7 @@ class ExploreListFragment : Fragment() {
 
 
     }
-//    override fun onResume() {
-//        super.onResume()
-//        // restore RecyclerView state
-//        if (mBundleRecyclerViewState != null) {
-//            val listState =
-//                mBundleRecyclerViewState!!.getParcelable<Parcelable>(KEY_RECYCLER_STATE)
-//            binding.exploreRecycler.layoutManager?.onRestoreInstanceState(listState)
-//        }
-//    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
