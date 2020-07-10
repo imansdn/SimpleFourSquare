@@ -12,8 +12,6 @@ interface ExploreDataSource {
 
     fun getExploreById(exploreId:String):Maybe<ExploreModel>
 
-    fun getAllExploresFromApiSaveToDB(isNeedClear:Boolean, latlong:String, offset:String):Maybe<List<ExploreModel>>
-
     fun clear()
 
 }
