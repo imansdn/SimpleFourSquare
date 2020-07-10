@@ -1,8 +1,6 @@
 package com.imandroid.simplefoursquare.data
 
 import android.annotation.SuppressLint
-import android.os.Parcelable
-import androidx.lifecycle.MutableLiveData
 import com.imandroid.simplefoursquare.data.dataSource.ExploreDataSource
 import com.imandroid.simplefoursquare.data.db.ExploreDbDataImpl
 import com.imandroid.simplefoursquare.data.db.table.ExploreEntity
@@ -12,11 +10,9 @@ import com.imandroid.simplefoursquare.domain.ExploreModel
 import com.imandroid.simplefoursquare.util.*
 import com.imandroid.simplefoursquare.util.PaginationListener.Companion.PAGE_SIZE
 import com.imandroid.simplefoursquare.util.extension.disposedBy
-import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.parcel.Parcelize
 import timber.log.Timber
 
 class ExploreRepository(

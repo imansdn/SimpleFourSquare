@@ -8,7 +8,7 @@ import io.reactivex.Single
 
 class ExploreDbDataImpl(private val dao: ExploreDao):ExploreDBDataSource {
 
-    override fun getAllExplores(limit:String ,pageNumber:String): Maybe<List<ExploreEntity>> {
+    override fun getAllExplores(limit:String, pageNumber:String): Maybe<List<ExploreEntity>> {
          val equivalentOffset = (limit.toInt() * (pageNumber.toInt()+1)) - limit.toInt()
         return dao.getAllExplores(limit = limit.toInt(), offset = equivalentOffset)
     }

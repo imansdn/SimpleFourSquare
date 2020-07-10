@@ -8,7 +8,7 @@ import io.reactivex.Single
 
 interface ExploreDBDataSource {
 
-    fun getAllExplores(limit:String ,offset:String): Maybe<List<ExploreEntity>>
+    fun getAllExplores(limit:String ,pageNumber:String): Maybe<List<ExploreEntity>>
 
     fun getExploreById(explore_id:String): Maybe<ExploreEntity>
 
