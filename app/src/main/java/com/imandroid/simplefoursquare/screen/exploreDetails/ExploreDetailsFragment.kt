@@ -135,16 +135,10 @@ class ExploreDetailsFragment : Fragment() {
     }
 
     private fun errorHandling(message:String){
-
-        requireActivity().findViewById<View>(android.R.id.content).snack("دریافت اطلاعات با خطا روبه رو شده است"){
-            action("تلاش مجدد") { sharedViewModel.getExploreById(explore_id = exploreModel.explore_id) }
+        Timber.e(message)
+        requireActivity().findViewById<View>(android.R.id.content).snack(R.string.error_occured_during_request_data){
+            action(R.string.try_again) { sharedViewModel.getExploreById(explore_id = exploreModel.explore_id) }
         }
-    }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Timber.i("onDestroyView")
     }
 
 }
