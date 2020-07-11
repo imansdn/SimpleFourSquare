@@ -34,14 +34,10 @@ class ExploreDetailsFragment : Fragment() {
     private fun getFactory(): ExploreSharedViewModelFactory {
 
         return ExploreSharedViewModelFactory(
-            repository = ExploreRepository(
-                api = ExploreApiDataImpl()
-                ,
-                db = ExploreDbDataImpl(DatabaseGenerator.getInstance(requireContext()).exploreDao)
-                ,
-                sharedPrefHelper = SharedPrefHelper.getInstance(requireContext())
-                , errorListener = { errorHandling(it) }
-            )
+         repository = ExploreRepository.getInstance(api = ExploreApiDataImpl(),
+        db = ExploreDbDataImpl(DatabaseGenerator.getInstance(requireContext()).exploreDao),
+        sharedPrefHelper = SharedPrefHelper.getInstance(requireContext()),
+        errorListener = {errorHandling(it)})
         )
     }
     private val sharedViewModel: ExploreSharedViewModel by activityViewModels {getFactory()}

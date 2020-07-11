@@ -14,6 +14,8 @@ import android.os.Build
 import android.os.IBinder
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDeepLinkBuilder
 import com.google.android.gms.location.*
 import com.imandroid.simplefoursquare.data.ExploreRepository
@@ -32,7 +34,7 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 import java.util.*
 import com.imandroid.simplefoursquare.R
-
+import com.imandroid.simplefoursquare.screen.exploreViewModel.ExploreSharedViewModel
 
 
 /**
@@ -40,7 +42,6 @@ import com.imandroid.simplefoursquare.R
  */
 class TrackingService : Service() {
     var bag = CompositeDisposable()
-
     private lateinit var repository: ExploreRepository
     private var client: FusedLocationProviderClient? = null
     private lateinit var sharedPrefHelper: SharedPrefHelper
@@ -51,12 +52,11 @@ class TrackingService : Service() {
     override fun onCreate() {
         super.onCreate()
         Timber.i("TrackingService onCreate")
-        repository = ExploreRepository(
-            api = ExploreApiDataImpl(),
+        repository = ExploreRepository.getInstance(api = ExploreApiDataImpl(),
             db = ExploreDbDataImpl(DatabaseGenerator.getInstance(baseContext).exploreDao),
             sharedPrefHelper = SharedPrefHelper.getInstance(baseContext),
-            errorListener = {errorHandling(it)}
-        )
+            errorListener = {errorHandling(it)})
+
         sharedPrefHelper = SharedPrefHelper.getInstance(baseContext)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             buildNotification()
@@ -164,7 +164,7 @@ class TrackingService : Service() {
         //Make sure to clean the location listener when the service is finished.
         client?.removeLocationUpdates(locationListener)
 
-        //Clear the walk photos and data.
+        //Clear all disposables.
         repository.clear()
         bag.dispose()
         bag.clear()

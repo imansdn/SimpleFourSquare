@@ -15,8 +15,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class ExploreRepository(
-    private val api: ExploreApiDataImpl ,
+class ExploreRepository private constructor(private val api: ExploreApiDataImpl ,
     private val db: ExploreDbDataImpl ,
     private val sharedPrefHelper: SharedPrefHelper ,
     private val errorListener: (String) -> Unit
@@ -157,5 +156,18 @@ class ExploreRepository(
         bag.clear()
     }
 
+    companion object {
+
+        // For Singleton instantiation
+        @Volatile private var instance: ExploreRepository? = null
+
+        fun getInstance(api: ExploreApiDataImpl ,
+                        db: ExploreDbDataImpl ,
+                        sharedPrefHelper: SharedPrefHelper ,
+                        errorListener: (String) -> Unit) =
+            instance ?: synchronized(this) {
+                instance ?: ExploreRepository(api, db, sharedPrefHelper, errorListener).also { instance = it }
+            }
+    }
 
 }

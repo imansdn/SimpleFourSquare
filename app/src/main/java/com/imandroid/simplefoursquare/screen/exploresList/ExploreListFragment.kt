@@ -39,13 +39,12 @@ import java.util.*
 
 class ExploreListFragment : Fragment() {
     private fun getFactory(): ExploreSharedViewModelFactory {
-        sharedPrefHelper =  SharedPrefHelper.getInstance(requireContext())
-        repository = ExploreRepository(
-            api = ExploreApiDataImpl(),
+        val sharedPrefHelper =  SharedPrefHelper.getInstance(requireContext())
+        val repository = ExploreRepository.getInstance(api = ExploreApiDataImpl(),
             db = ExploreDbDataImpl(DatabaseGenerator.getInstance(requireContext()).exploreDao),
             sharedPrefHelper = sharedPrefHelper,
-            errorListener = {errorHandling(it)}
-        )
+            errorListener = {errorHandling(it)})
+
         return ExploreSharedViewModelFactory(repository)
     }
     private val sharedViewModel: ExploreSharedViewModel by activityViewModels {getFactory()}
@@ -61,7 +60,7 @@ class ExploreListFragment : Fragment() {
              }
          }
     }
-    private lateinit var repository: ExploreRepository
+//    private lateinit var repository: ExploreRepository
     lateinit var sharedPrefHelper: SharedPrefHelper
     private val broadCastNewMessage = object :BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
@@ -122,13 +121,8 @@ class ExploreListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         sharedViewModel.currentPage=0
         Timber.i("onActivityCreated")
-        sharedPrefHelper =  SharedPrefHelper.getInstance(requireContext())
-        repository = ExploreRepository(
-            api = ExploreApiDataImpl(),
-            db = ExploreDbDataImpl(DatabaseGenerator.getInstance(requireContext()).exploreDao),
-            sharedPrefHelper = sharedPrefHelper,
-            errorListener = {errorHandling(it)}
-        )
+        sharedPrefHelper = SharedPrefHelper.getInstance(requireContext())
+
         binding.txtLocation.text=sharedPrefHelper.read(SH_CITY_NAME,"looking for city...")
 
         setUpRecyclerView(savedInstanceState)
