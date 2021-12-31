@@ -47,10 +47,9 @@ class ExploreRepository private constructor(private val api: ExploreApiDataImpl 
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
             .doOnSuccess {
-                Timber.d("Dispatching ${it!!.response.groups[0].items.size} explores from API...")
-                if (it.response.groups[0].items.isNotEmpty()) {
+                if (it.placeResults.isNotEmpty()) {
 
-                    val totalResult = it.response.totalResults
+                    val totalResult = it.placeResults.size
 
                     val totalPage =
                         if (totalResult % PAGE_SIZE == 0) totalResult / PAGE_SIZE else (totalResult / PAGE_SIZE + 1)
@@ -78,7 +77,7 @@ class ExploreRepository private constructor(private val api: ExploreApiDataImpl 
             }
             .doOnError {
                 Timber.e("can not get the result from get all explores. error = ${it.message}")
-            }.map { expDtoToListExpModel(it) }
+            }.map { placeDtoToListExpModel(it) }
 
 
     }
@@ -117,14 +116,14 @@ class ExploreRepository private constructor(private val api: ExploreApiDataImpl 
 
     private fun getExploreByIdFromApiSaveToDB(explore_id: String): Maybe<ExploreModel> {
         //get from api and update in db
-        return api.getExploreDetails(explore_id)
+        return api.getPlaceDetails(explore_id)
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.io())
             .doOnSuccess {
-                Timber.d("Dispatching explore \"${it.response.venue.name}\" from API...")
+                Timber.d("Dispatching explore \"${it.name}\" from API...")
                 db.getExplorePrimaryKeyByID(explore_id).subscribe({ primaryKey ->
                     Timber.i("the primary key is $primaryKey")
-                    val exploreEntity = exploreDetailsDtoToExpEntity(it)
+                    val exploreEntity = placeDetailsDtoToExpEntity(it)
                     exploreEntity.id = primaryKey.toLong()
                     var rowsUpdated = db.updateExplore(exploreEntity)
                     Timber.d("Updated explore ${exploreEntity.name}  from API in DB.../rowsUpdated = $rowsUpdated")
@@ -135,7 +134,7 @@ class ExploreRepository private constructor(private val api: ExploreApiDataImpl 
                     Timber.e("can not Dispatching explore id \"${explore_id}\" from DB - error =${it.message}  ")
                 }).disposedBy(bag)
 
-            }.map { expEntityToExpModel(exploreDetailsDtoToExpEntity(it)) }
+            }.map { expEntityToExpModel(placeDetailsDtoToExpEntity(it)) }
 
 
     }
@@ -155,7 +154,6 @@ class ExploreRepository private constructor(private val api: ExploreApiDataImpl 
     }
 
     companion object {
-
         // For Singleton instantiation
         @Volatile private var instance: ExploreRepository? = null
 

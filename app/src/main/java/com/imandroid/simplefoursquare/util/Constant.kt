@@ -4,6 +4,7 @@ import com.imandroid.simplefoursquare.BuildConfig
 
 const val CLIENT_SECRET = BuildConfig.client_secret
 const val CLIENT_ID = BuildConfig.client_id
+const val API_KEY = BuildConfig.api_key
 const val VERSION_API = "20200210"
 const val SAMPLE_LAT_LNG = "31.3119,48.6617"
 const val BROADCAST_UPDATE_EXPLORE_LIST = "UPDATE_EXPLORE_LIST"

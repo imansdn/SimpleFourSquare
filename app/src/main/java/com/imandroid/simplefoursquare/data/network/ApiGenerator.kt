@@ -18,11 +18,16 @@
 package com.imandroid.simplefoursquare.data.network
 
 
+import android.util.SparseArray
+import com.imandroid.simplefoursquare.data.network.mock.CallAdapterFactoryWithMockUp
+import com.imandroid.simplefoursquare.data.network.mock.MockUpInfo
+import com.imandroid.simplefoursquare.data.network.mock.MockupInterceptor
+import com.imandroid.simplefoursquare.util.API_KEY
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -30,7 +35,7 @@ import java.util.concurrent.TimeUnit
 object ApiGenerator {
 
     private const val BASE_URL = "https://api.foursquare.com/"
-    private const val API_ENDPOINT = "v2/venues/"
+    private const val API_VERSION = "v3/"
 
 
     private const val CONNECT_TIME_OUT = 20L
@@ -38,45 +43,43 @@ object ApiGenerator {
     private const val WRITE_TIME_OUT = 60L
 
 
-    private var interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-    private var client = OkHttpClient.Builder().addInterceptor(interceptor)
+    private var httpLoggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+    private val headerInterceptor = HeaderInterceptor()
+    private val mockUpInfoMap = SparseArray<MockUpInfo>()
+    private var client = OkHttpClient.Builder()
+        .addInterceptor(httpLoggingInterceptor)
+        .addInterceptor(headerInterceptor)
+        .addInterceptor(MockupInterceptor(mockUpInfoMap))
         .connectTimeout(CONNECT_TIME_OUT, TimeUnit.SECONDS)
         .readTimeout(READ_TIME_OUT, TimeUnit.SECONDS)
         .writeTimeout(WRITE_TIME_OUT, TimeUnit.SECONDS)
         .build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL+API_ENDPOINT)
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .baseUrl(BASE_URL+API_VERSION)
         .client(client)
+        .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(CallAdapterFactoryWithMockUp.create(mockUpInfoMap))
         .build()
 
 
     fun <S> createService(serviceClass: Class<S>): S {
-        return createService(serviceClass, null)
-    }
-
-    fun <S> createService(serviceClass: Class<S>, authToken: String?): S {
-        if (authToken != null) {
-            addRequestHeaders(authToken)
-        }
-
         return retrofit.create(serviceClass)
     }
 
-    private fun addRequestHeaders(authToken: String?) {
-        client.interceptors().add(Interceptor { chain ->
-            val original = chain.request()
-
-            // Request customization: add request headers
-            val requestBuilder = original.newBuilder().header("Authorization", authToken!!)
-                .method(original.method(), original.body())
-
-            val request = requestBuilder.build()
-            chain.proceed(request)
-        })
+    class HeaderInterceptor() : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response = chain.run {
+            proceed(
+                request()
+                    .newBuilder()
+                    .addHeader("Authorization", API_KEY)
+                    .build()
+            )
+        }
     }
+
+
+
 }
 
 

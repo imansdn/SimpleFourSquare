@@ -22,10 +22,16 @@ android {
         debug{
             buildConfigField 'String',"client_id",FOUR_SQUARE_CLIENT_ID
             buildConfigField 'String',"client_secret",FOUR_SQUARE_CLIENT_SECRET
+            buildConfigField 'String',"api_key",API_KEY
+            buildConfigField "boolean","MOCKUP","true"
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String',"client_id",FOUR_SQUARE_CLIENT_ID
+            buildConfigField 'String',"client_secret",FOUR_SQUARE_CLIENT_SECRET
+            buildConfigField 'String',"api_key",API_KEY
+            buildConfigField "boolean","MOCKUP","false"
         }
     }
 
@@ -113,7 +119,7 @@ dependencies {
     //timber
     implementation "com.jakewharton.timber:timber:4.7.1"
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-alpha-3'
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-alpha-3'
 
 
 }

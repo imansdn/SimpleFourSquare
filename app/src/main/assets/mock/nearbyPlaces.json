@@ -1,0 +1,310 @@
+{
+  "results": [
+    {
+      "fsq_id": "55020690498e6dd512bf18ac",
+      "categories": [
+        {
+          "id": 11001,
+          "name": "Advertising Agency",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/default_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 1698,
+      "geocodes": {
+        "main": {
+          "latitude": 41.88291992,
+          "longitude": -87.6492826
+        }
+      },
+      "location": {
+        "address": "845 W Washington Blvd",
+        "address_extended": "Ste 2",
+        "country": "US",
+        "cross_street": "",
+        "dma": "Chicago",
+        "locality": "Chicago",
+        "neighborhood": [
+          "Carpenters Addition"
+        ],
+        "postcode": "60607",
+        "region": "IL"
+      },
+      "name": "SoMe Connect",
+      "related_places": {},
+      "timezone": "America/Chicago"
+    },
+    {
+      "fsq_id": "41fd7500f964a520501f1fe3",
+      "categories": [
+        {
+          "id": 13022,
+          "name": "Sports Bar",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/nightlife/sportsbar_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13236,
+          "name": "Italian Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/italian_",
+            "suffix": ".png"
+          }
+        },
+        {
+          "id": 13383,
+          "name": "Steakhouse",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/steakhouse_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 1219,
+      "geocodes": {
+        "main": {
+          "latitude": 41.889071055749454,
+          "longitude": -87.6294590845703
+        }
+      },
+      "location": {
+        "address": "33 W Kinzie St",
+        "country": "US",
+        "cross_street": "at Dearborn St",
+        "dma": "Chicago",
+        "locality": "Chicago",
+        "neighborhood": [
+          "Fort Dearborn Addition"
+        ],
+        "postcode": "60654",
+        "region": "IL"
+      },
+      "name": "Harry Caray's Italian Steakhouse",
+      "related_places": {},
+      "timezone": "America/Chicago"
+    },
+    {
+      "fsq_id": "51350578e4b0ed273e077352",
+      "categories": [
+        {
+          "id": 11128,
+          "name": "Coworking Space",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/office_coworkingspace_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 9199,
+      "geocodes": {
+        "main": {
+          "latitude": 41.928352,
+          "longitude": -87.718196
+        }
+      },
+      "location": {
+        "address": "3624 W Wrightwood Ave",
+        "country": "US",
+        "cross_street": "Monticello",
+        "dma": "Chicago",
+        "locality": "Chicago",
+        "neighborhood": [
+          "Logan Square"
+        ],
+        "postcode": "60647",
+        "region": "IL"
+      },
+      "name": "Some Office",
+      "related_places": {},
+      "timezone": "America/Chicago"
+    },
+    {
+      "fsq_id": "576f3ca6498ef2e961ba68e4",
+      "categories": [
+        {
+          "id": 13000,
+          "name": "Dining and Drinking",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/default_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 6935,
+      "geocodes": {
+        "main": {
+          "latitude": 41.8184315929542,
+          "longitude": -87.60525095247108
+        }
+      },
+      "location": {
+        "address": "4259 S Cottage Grove Ave",
+        "address_extended": "Unit D",
+        "country": "US",
+        "cross_street": "",
+        "dma": "Chicago",
+        "locality": "Chicago",
+        "neighborhood": [
+          "Berkeley Cottages"
+        ],
+        "postcode": "60653",
+        "region": "IL"
+      },
+      "name": "Some Like It Black Creative Arts Bar",
+      "related_places": {},
+      "timezone": "America/Chicago"
+    },
+    {
+      "fsq_id": "4b8459d3f964a520433031e3",
+      "categories": [
+        {
+          "id": 16037,
+          "name": "Playground",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/parks_outdoors/playground_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 2197,
+      "geocodes": {
+        "main": {
+          "latitude": 41.8970544334826,
+          "longitude": -87.62224316596985
+        }
+      },
+      "location": {
+        "address": "228 E Chicago Ave",
+        "country": "US",
+        "cross_street": "at Mies Van Der Rohe",
+        "dma": "Chicago",
+        "locality": "Chicago",
+        "neighborhood": [
+          "Gold Coast"
+        ],
+        "postcode": "60611",
+        "region": "IL"
+      },
+      "name": "Seneca Park",
+      "related_places": {},
+      "timezone": "America/Chicago"
+    },
+    {
+      "fsq_id": "59a6710e4a1cc05dc1ea30ce",
+      "categories": [
+        {
+          "id": 13065,
+          "name": "Restaurant",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/food/default_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 2713,
+      "geocodes": {
+        "main": {
+          "latitude": 41.902496843823144,
+          "longitude": -87.62852369539941
+        }
+      },
+      "location": {
+        "address": "1112 N State St",
+        "country": "US",
+        "cross_street": "btwn Elm St & Maple St",
+        "dma": "Chicago",
+        "locality": "Chicago",
+        "neighborhood": [
+          "Gold Coast"
+        ],
+        "postcode": "60610",
+        "region": "IL"
+      },
+      "name": "Somerset",
+      "related_places": {},
+      "timezone": "America/Chicago"
+    },
+    {
+      "fsq_id": "4cd03a3f5b5ca35d7e9c7af0",
+      "categories": [
+        {
+          "id": 11128,
+          "name": "Coworking Space",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/office_coworkingspace_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 1643,
+      "geocodes": {
+        "main": {
+          "latitude": 41.892762807475634,
+          "longitude": -87.63237759953886
+        }
+      },
+      "location": {
+        "address": "550 W Jackson Blvd",
+        "country": "US",
+        "cross_street": "Clinton",
+        "dma": "Chicago",
+        "locality": "Chicago",
+        "neighborhood": [
+          "Duncans Addition"
+        ],
+        "postcode": "60661",
+        "region": "IL"
+      },
+      "name": "Chicago Twenty Something",
+      "related_places": {},
+      "timezone": "America/Chicago"
+    },
+    {
+      "fsq_id": "50cb4803e4b0d4bd0bb9b582",
+      "categories": [
+        {
+          "id": 11124,
+          "name": "Office",
+          "icon": {
+            "prefix": "https://ss3.4sqi.net/img/categories_v2/building/default_",
+            "suffix": ".png"
+          }
+        }
+      ],
+      "chains": [],
+      "distance": 1729,
+      "geocodes": {
+        "main": {
+          "latitude": 41.893630989354115,
+          "longitude": -87.63114864338496
+        }
+      },
+      "location": {
+        "address": "644 N Clark St",
+        "country": "US",
+        "cross_street": "Ontario",
+        "dma": "Chicago",
+        "locality": "Chicago",
+        "neighborhood": [
+          "Loop"
+        ],
+        "postcode": "60654",
+        "region": "IL"
+      },
+      "name": "Chicago Twenty Something",
+      "related_places": {},
+      "timezone": "America/Chicago"
+    }
+  ]
+}

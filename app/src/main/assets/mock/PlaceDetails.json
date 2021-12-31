@@ -1,0 +1,36 @@
+{
+  "fsq_id": "55020690498e6dd512bf18ac",
+  "categories": [
+    {
+      "id": 11001,
+      "name": "Advertising Agency",
+      "icon": {
+        "prefix": "https://ss3.4sqi.net/img/categories_v2/building/default_",
+        "suffix": ".png"
+      }
+    }
+  ],
+  "chains": [],
+  "geocodes": {
+    "main": {
+      "latitude": 41.88291992,
+      "longitude": -87.6492826
+    }
+  },
+  "location": {
+    "address": "845 W Washington Blvd",
+    "address_extended": "Ste 2",
+    "country": "US",
+    "cross_street": "",
+    "dma": "Chicago",
+    "locality": "Chicago",
+    "neighborhood": [
+      "Carpenters Addition"
+    ],
+    "postcode": "60607",
+    "region": "IL"
+  },
+  "name": "SoMe Connect",
+  "related_places": {},
+  "timezone": "America/Chicago"
+}
