@@ -1,8 +1,6 @@
 package com.imandroid.simplefoursquare.data.dataSource
 
 import com.imandroid.simplefoursquare.data.db.table.ExploreEntity
-import com.imandroid.simplefoursquare.data.network.dto.GetExploreDetailsDTO
-import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
 
