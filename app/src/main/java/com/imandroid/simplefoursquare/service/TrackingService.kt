@@ -2,21 +2,14 @@ package com.imandroid.simplefoursquare.service
 
 
 import android.app.*
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.graphics.Color
-import android.location.Address
-import android.location.Geocoder
 import android.location.Location
 import android.os.Build
 import android.os.IBinder
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavDeepLinkBuilder
 import com.google.android.gms.location.*
 import com.imandroid.simplefoursquare.data.ExploreRepository
 import com.imandroid.simplefoursquare.data.db.DatabaseGenerator
@@ -26,15 +19,10 @@ import com.imandroid.simplefoursquare.data.sharedPref.SharedPrefHelper
 import com.imandroid.simplefoursquare.screen.MainActivity
 import com.imandroid.simplefoursquare.util.*
 import com.imandroid.simplefoursquare.util.extension.checkLocationPermission
-import com.imandroid.simplefoursquare.util.extension.disposedBy
 import com.imandroid.simplefoursquare.util.extension.distanceBetween
-import io.reactivex.Maybe
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
-import java.util.*
 import com.imandroid.simplefoursquare.R
-import com.imandroid.simplefoursquare.screen.exploreViewModel.ExploreSharedViewModel
 
 
 /**
@@ -54,8 +42,7 @@ class TrackingService : Service() {
         Timber.i("TrackingService onCreate")
         repository = ExploreRepository.getInstance(api = ExploreApiDataImpl(),
             db = ExploreDbDataImpl(DatabaseGenerator.getInstance(baseContext).exploreDao),
-            sharedPrefHelper = SharedPrefHelper.getInstance(baseContext),
-            errorListener = {errorHandling(it)})
+            sharedPrefHelper = SharedPrefHelper.getInstance(baseContext))
 
         sharedPrefHelper = SharedPrefHelper.getInstance(baseContext)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -64,9 +51,6 @@ class TrackingService : Service() {
 
         requestLocationUpdates()
 
-    }
-    private fun errorHandling(message:String){
-     //send error with broadcast to change the loading state
     }
 
     /**

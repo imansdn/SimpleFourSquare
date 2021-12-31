@@ -1,5 +1,6 @@
 package com.imandroid.simplefoursquare.data.network
 
+import com.imandroid.simplefoursquare.BuildConfig
 import com.imandroid.simplefoursquare.data.network.dto.GetAllExploresDTO
 import com.imandroid.simplefoursquare.data.network.dto.GetExploreDetailsDTO
 import com.imandroid.simplefoursquare.util.CLIENT_ID
@@ -15,7 +16,6 @@ import retrofit2.http.Query
 
 
 interface Api {
-
     @GET("explore")
     fun getAllExploresByName(
         @Query("client_id") client_id: String = CLIENT_ID,

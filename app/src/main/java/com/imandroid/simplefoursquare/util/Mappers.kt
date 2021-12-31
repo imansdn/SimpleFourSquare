@@ -61,8 +61,8 @@ fun expDtoToListExpModel(exploresDTO: GetAllExploresDTO): List<ExploreModel> {
 }
 
 fun exploreDetailsDtoToExpEntity(input:GetExploreDetailsDTO):ExploreEntity{
-    val photosList= if (input.response.venue.photos.groups.isNotEmpty()) listXtoListY(input.response.venue.photos.groups[0].items,::photosDetailsDtoString) else listOf()
-    val tipsList= if (input.response.venue.tips.groups.isNotEmpty()) listXtoListY(input.response.venue.tips.groups[0].items,::tipsDetailsDtoTipEntity) else listOf()
+    val photosList= if (input.response.venue.photos?.groups?.isNotEmpty()==true) listXtoListY(input.response.venue.photos.groups[0].items,::photosDetailsDtoString) else listOf()
+    val tipsList= if (input.response.venue.tips?.groups?.isNotEmpty()== true) listXtoListY(input.response.venue.tips.groups[0].items,::tipsDetailsDtoTipEntity) else listOf()
     return ExploreEntity(
         explore_id = input.response.venue.id.toString() ,
         name = input.response.venue.name.toString(),

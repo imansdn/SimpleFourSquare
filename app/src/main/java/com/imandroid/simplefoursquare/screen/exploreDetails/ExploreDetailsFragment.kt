@@ -36,8 +36,7 @@ class ExploreDetailsFragment : Fragment() {
         return ExploreSharedViewModelFactory(
          repository = ExploreRepository.getInstance(api = ExploreApiDataImpl(),
         db = ExploreDbDataImpl(DatabaseGenerator.getInstance(requireContext()).exploreDao),
-        sharedPrefHelper = SharedPrefHelper.getInstance(requireContext()),
-        errorListener = {errorHandling(it)})
+        sharedPrefHelper = SharedPrefHelper.getInstance(requireContext()))
         )
     }
     private val sharedViewModel: ExploreSharedViewModel by activityViewModels {getFactory()}

@@ -9,6 +9,7 @@ import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -39,12 +40,10 @@ import java.util.*
 
 class ExploreListFragment : Fragment() {
     private fun getFactory(): ExploreSharedViewModelFactory {
-        val sharedPrefHelper =  SharedPrefHelper.getInstance(requireContext())
         val repository = ExploreRepository.getInstance(api = ExploreApiDataImpl(),
             db = ExploreDbDataImpl(DatabaseGenerator.getInstance(requireContext()).exploreDao),
-            sharedPrefHelper = sharedPrefHelper,
-            errorListener = {errorHandling(it)})
-
+            sharedPrefHelper = SharedPrefHelper.getInstance(requireContext()))
+//            listOf()
         return ExploreSharedViewModelFactory(repository)
     }
     private val sharedViewModel: ExploreSharedViewModel by activityViewModels {getFactory()}
@@ -103,8 +102,7 @@ class ExploreListFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.explore_list_fragment, container, false)
 
         /** register the broadcast receiver */

@@ -68,7 +68,7 @@ data class GetExploreDetailsDTO(
             @SerializedName("parent")
             val parent: Parent,
             @SerializedName("photos")
-            val photos: Photos,
+            val photos: Photos?,
             @SerializedName("popular")
             val popular: Popular,
             @SerializedName("rating")
@@ -90,7 +90,7 @@ data class GetExploreDetailsDTO(
             @SerializedName("timeZone")
             val timeZone: String,
             @SerializedName("tips")
-            val tips: Tips,
+            val tips: Tips?,
             @SerializedName("verified")
             val verified: Boolean
         ) {
@@ -595,7 +595,7 @@ data class GetExploreDetailsDTO(
                 @SerializedName("count")
                 val count: Int,
                 @SerializedName("groups")
-                val groups: List<Group4>
+                val groups: List<Group4>?
             ) {
                 data class Group4(
                     @SerializedName("count")

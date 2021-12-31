@@ -33,7 +33,6 @@ class ExploreAdapter constructor(val listener: (Int) -> Unit) :
 
 
 
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         when (holder) {
@@ -43,12 +42,9 @@ class ExploreAdapter constructor(val listener: (Int) -> Unit) :
                 {
                     val exploreItem = getItem(position) as DataItem.ExploreItem
                     holder.bind(exploreItem.explore)
-
                 }
-
             }
         }
-
 
     }
 

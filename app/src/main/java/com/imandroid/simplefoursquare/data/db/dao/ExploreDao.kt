@@ -2,7 +2,6 @@ package com.imandroid.simplefoursquare.data.db.dao
 
 import androidx.room.*
 import com.imandroid.simplefoursquare.data.db.table.ExploreEntity
-import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
 

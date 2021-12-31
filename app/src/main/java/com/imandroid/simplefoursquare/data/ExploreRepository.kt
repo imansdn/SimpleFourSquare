@@ -17,8 +17,7 @@ import timber.log.Timber
 
 class ExploreRepository private constructor(private val api: ExploreApiDataImpl ,
     private val db: ExploreDbDataImpl ,
-    private val sharedPrefHelper: SharedPrefHelper ,
-    private val errorListener: (String) -> Unit
+    private val sharedPrefHelper: SharedPrefHelper
 ) : ExploreDataSource {
     var bag = CompositeDisposable()
 
@@ -79,7 +78,6 @@ class ExploreRepository private constructor(private val api: ExploreApiDataImpl 
             }
             .doOnError {
                 Timber.e("can not get the result from get all explores. error = ${it.message}")
-                errorListener(it.message.toString())
             }.map { expDtoToListExpModel(it) }
 
 
@@ -163,10 +161,9 @@ class ExploreRepository private constructor(private val api: ExploreApiDataImpl 
 
         fun getInstance(api: ExploreApiDataImpl ,
                         db: ExploreDbDataImpl ,
-                        sharedPrefHelper: SharedPrefHelper ,
-                        errorListener: (String) -> Unit) =
+                        sharedPrefHelper: SharedPrefHelper ) =
             instance ?: synchronized(this) {
-                instance ?: ExploreRepository(api, db, sharedPrefHelper, errorListener).also { instance = it }
+                instance ?: ExploreRepository(api, db, sharedPrefHelper).also { instance = it }
             }
     }
 
