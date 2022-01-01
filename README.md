@@ -1,5 +1,6 @@
 # SimpleFourSquare
-Video Demo:  <URL HERE ####>
+Video Demo:  <https://youtu.be/cWMjLrcf6_U>
+
 an application that uses FourSquare API to show all the near places in a list and details of any item in a separate screen.
 
 # API_KEY
