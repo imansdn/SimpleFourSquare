@@ -1,4 +1,4 @@
-# SimpleFourSquare Description
+# CS50 final project: SimpleFourSquare
 it is an android application that uses FourSquare API to show all the near places in a list and show details of each item in another screen by click on that.
 in addition, there is a change location listener service that detects location to show the new nearby places!
 
