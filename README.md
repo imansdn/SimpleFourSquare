@@ -4,8 +4,6 @@ in addition, there is a change location listener service that detects location t
 
 as the last task of course asks, it is a short presentation of the project:
 
-Video Demo:  <https://youtu.be/cWMjLrcf6_U>
-
 
 # first page - places items
 - detect location when it is changed
